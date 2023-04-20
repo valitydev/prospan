@@ -4,7 +4,10 @@
   {registered, []},
   {applications,
    [kernel,
-    stdlib
+    stdlib,
+    getopt,
+    cf,
+    jsone
    ]},
   {env,[]},
   {modules, []},

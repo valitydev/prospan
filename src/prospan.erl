@@ -9,9 +9,10 @@
 
 %% escript Entry point
 -spec main([string()]) -> no_return().
-main(Args) ->
-    erlang:display(Args),
-    erlang:display(read_stdin()),
+main(_Args) ->
+    Data = jsone:decode(read_stdin(), [{object_format, map}]),
+
+    erlang:display(Data),
     %% Example plantuml
     Out = [
         "@startuml\n",
@@ -32,12 +33,12 @@ main(Args) ->
 -define(READ_BYTES, 8192).
 
 read_stdin() ->
-    read_stdin([], io:get_chars('', ?READ_BYTES)).
+    iolist_to_binary(read_stdin([], io:get_chars('', ?READ_BYTES))).
 
 read_stdin(Buffer, eof) ->
-    lists:revers(Buffer);
+    lists:reverse(Buffer);
 read_stdin(Buffer, DataIn) ->
-    [DataIn | Buffer].
+    read_stdin([DataIn | Buffer], io:get_chars('', ?READ_BYTES)).
 
 write_stdout(IoList) ->
-    io:format("~s~n", [IoList]).
+    io:fwrite(standard_io, "~s~n", [IoList]).
