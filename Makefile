@@ -45,8 +45,13 @@ xref:
 dialyze:
 	$(REBAR) as test dialyzer
 
-test:
+eunit:
 	$(REBAR) eunit
+
+common-test:
+	$(REBAR) ct
+
+test: eunit common-test
 
 clean:
 	$(REBAR) clean
