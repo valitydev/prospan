@@ -19,16 +19,9 @@ Draw a sequence diagram from aggregated log messages collection queried from ela
 
 Output examples:
 
-![examples/output1.svg](examples/output1.svg)
-
-![examples/output2.svg](examples/output2.svg)
-
 ![examples/output3.svg](examples/output3.svg)
 
 ![examples/output4.svg](examples/output4.svg)
-
-(with timestamps and metadata)
-![examples/output5.svg](examples/output5.svg)
 
 Zipkin
 ------
